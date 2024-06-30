@@ -1,0 +1,14 @@
+<clickhouse>
+        <logger>
+                <level>debug</level>
+                <log>/var/log/clickhouse-server/clickhouse-server.log</log>
+                <errorlog>/var/log/clickhouse-server/clickhouse-server.err.log</errorlog>
+                <size>1000M</size>
+                <count>3</count>
+        </logger>
+        <display_name>clickhouse</display_name>
+        <listen_host>0.0.0.0</listen_host>
+        <http_port>8123</http_port>
+        <tcp_port>9000</tcp_port>
+        <interserver_http_port>9009</interserver_http_port>
+</clickhouse>
