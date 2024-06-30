@@ -1,0 +1,53 @@
+version: '3.8'
+services:
+  chnode1:
+    build: .
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+      - "9181:9181"
+      - "9234:9234"
+    volumes:
+      - ./configs/config1:/etc/clickhouse-server/config.d
+      - ./logs/logs_1:/var/log/clickhouse-server/
+    networks:
+      - clickhouse_network
+    mem_limit: 2G
+    cpus: 2
+    command: ["clickhouse-server", "--config-file=/etc/clickhouse-server/config.xml", "start"]
+
+  chnode2:
+    build: .
+    ports:
+      - "8124:8123"
+      - "9001:9000"
+      - "9182:9181"
+      - "9235:9234"
+    volumes:
+      - ./configs/config2:/etc/clickhouse-server/config.d/
+      - ./logs/logs_2:/var/log/clickhouse-server/
+    networks:
+      - clickhouse_network
+    mem_limit: 2G
+    cpus: 2
+    command: ["clickhouse-server", "--config-file=/etc/clickhouse-server/config.xml", "start"]
+
+  chnode3:
+    build: .
+    ports:
+      - "8125:8123"
+      - "9002:9000"
+      - "9183:9181"
+      - "9236:9234"
+    volumes:
+      - ./configs/config3:/etc/clickhouse-server/config.d/
+      - ./logs/logs_3:/var/log/clickhouse-server/
+    networks:
+      - clickhouse_network
+    mem_limit: 2G
+    cpus: 2
+    command: ["clickhouse-server", "--config-file=/etc/clickhouse-server/config.xml", "start"]
+
+networks:
+  clickhouse_network:
+    driver: bridge
