@@ -12,7 +12,7 @@ services:
       - ./logs/logs_1:/var/log/clickhouse-server/
     networks:
       - clickhouse_network
-    mem_limit: 2G
+    mem_limit: 4G
     cpus: 2
     command: ["clickhouse-server", "--config-file=/etc/clickhouse-server/config.xml", "start"]
 
@@ -28,9 +28,26 @@ services:
       - ./logs/logs_2:/var/log/clickhouse-server/
     networks:
       - clickhouse_network
-    mem_limit: 2G
+    mem_limit: 4G
     cpus: 2
     command: ["clickhouse-server", "--config-file=/etc/clickhouse-server/config.xml", "start"]
+
+  chnode3:
+    build: .
+    ports:
+      - "8125:8123"
+      - "9002:9000"
+      - "9183:9181"
+      - "9236:9234"
+    volumes:
+      - ./configs/config3:/etc/clickhouse-server/config.d/
+      - ./logs/logs_3:/var/log/clickhouse-server/
+    networks:
+      - clickhouse_network
+    mem_limit: 4G
+    cpus: 2
+    command: ["clickhouse-server", "--config-file=/etc/clickhouse-server/config.xml", "start"]
+
 networks:
   clickhouse_network:
     driver: bridge
