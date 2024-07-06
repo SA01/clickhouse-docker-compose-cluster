@@ -10,6 +10,7 @@ services:
     volumes:
       - ./configs/config1:/etc/clickhouse-server/config.d
       - ./logs/logs_1:/var/log/clickhouse-server/
+      - ./data:/var/lib/clickhouse/user_files
     networks:
       - clickhouse_network
     mem_limit: 4G
@@ -26,6 +27,7 @@ services:
     volumes:
       - ./configs/config2:/etc/clickhouse-server/config.d/
       - ./logs/logs_2:/var/log/clickhouse-server/
+      - ./data:/var/lib/clickhouse/user_files
     networks:
       - clickhouse_network
     mem_limit: 4G
@@ -42,6 +44,7 @@ services:
     volumes:
       - ./configs/config3:/etc/clickhouse-server/config.d/
       - ./logs/logs_3:/var/log/clickhouse-server/
+      - ./data:/var/lib/clickhouse/user_files
     networks:
       - clickhouse_network
     mem_limit: 4G
