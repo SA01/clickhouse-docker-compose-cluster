@@ -8,5 +8,9 @@
             <host>chnode2</host>
             <port>9181</port>
         </node>
+        <node index="3">
+            <host>chnode3</host>
+            <port>9181</port>
+        </node>
     </zookeeper>
 </clickhouse>

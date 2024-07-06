@@ -4,7 +4,7 @@
                 <log>/var/log/clickhouse-server/clickhouse-server.log</log>
                 <errorlog>/var/log/clickhouse-server/clickhouse-server.err.log</errorlog>
                 <size>1000M</size>
-                <count>2</count>
+                <count>3</count>
         </logger>
         <display_name>clickhouse</display_name>
         <listen_host>0.0.0.0</listen_host>
